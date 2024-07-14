@@ -1,6 +1,6 @@
 ---
 - name: Testing connectivity to servers
-  hosts: my-servers
+  hosts: all
   tasks:
     - name: Ping servers
       ping:

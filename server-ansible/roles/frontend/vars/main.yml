@@ -1,0 +1,3 @@
+#  here we  declare variables
+app_path: /usr/share/nginx/html
+component: frontend

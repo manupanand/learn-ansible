@@ -1,0 +1,16 @@
+#this contain comon requrement files and codes which is common for all
+#like copy,add user
+- name: Adding Application user
+  ansible.builtin.user:
+    name: username
+
+- name: Remove old Content
+  ansible.builtin.file:
+    path: "{{ app_path }}"
+    state: absent
+
+- name: Create a directory
+  ansible.builtin.file:
+    path: "{{ app_path }}"
+    state: directory
+

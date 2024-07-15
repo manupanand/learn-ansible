@@ -1,0 +1,6 @@
+- name: Frontend Playbook
+  hosts: all
+  become: true
+  roles:
+    - "{{ role_name }}"
+    # using variable to access from commandline

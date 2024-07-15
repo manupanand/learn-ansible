@@ -14,6 +14,12 @@
     src: nginx.conf
     dest: /etc/nginx/nginx.conf
 
+# Add task from another file
+- name: Setup app prerequisite
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: app-prereq
+
 - name: Start Nginx service
   ansible.builtin.systemd:
     state: restarted

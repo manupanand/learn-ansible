@@ -1,5 +1,10 @@
 #this contain comon requrement files and codes which is common for all
 #like copy,add user
+- name: Install unzip package
+  ansible.builtin.dnf:
+    name: unzip
+    state: present
+    
 - name: Adding Application user
   ansible.builtin.user:
     name: username
@@ -13,4 +18,10 @@
   ansible.builtin.file:
     path: "{{ app_path }}"
     state: directory
+
+- name: Download application and unzip
+  ansible.builtin.unarchive:
+    src: https://roboshop-artifacts.s3.amazonaws.com/{{component}}-v3.zip
+    dest: "{{ app_path }}"
+    remote_src: yes
 

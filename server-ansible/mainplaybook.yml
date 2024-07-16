@@ -1,4 +1,18 @@
-- name: Frontend Playbook
+- name: Main Playbook
+  hosts: all
+  become: true
+  tasks:
+    - name: Updating the latest version
+      ansible.builtin.dnf:
+        name: dnf
+        state: latest
+
+    - name: All Packages are updated to their latest version
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+
+- name: Including roles
   hosts: all
   become: true
   roles:

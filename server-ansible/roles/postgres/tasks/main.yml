@@ -1,9 +1,15 @@
+# - name: Import a postgres key
+#   ansible.builtin.rpm_key:
+#     state: present
+#     key: http://apt.sw.be/RPM-GPG-KEY.dag.txt
 
-- name: Install postgres repo
-  ansible.builtin.dnf:
-    name: "https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
-    state: present
 
+# - name: Install postgres repo
+#   ansible.builtin.dnf:
+#     name: "https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
+#     state: present
+- name: Install postgres repo 
+  ansible.builtin.shell: dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 # - name: Disable the built-in PostgreSQL module
 #   ansible.builtin.shell: dnf module disable postgres -y
 - name: Disable the built-in PostgreSQL module
@@ -31,3 +37,45 @@
   ansible.builtin.systemd:
     name: postgresql-16
     state: started
+
+# edit postgres config using lineinfile
+- name: Editing the postgres config file- postgresql.conf
+  ansible.builtin.lineinfile:
+    path: "{{ postgresql_conf_path }}"
+    regexp: '^#?listen_addresses\s*='
+    line: "listen_addresses = '*' " 
+    state: present
+  # notify: restart postgresql
+- name: Restart PostgreSQL service
+  ansible.builtin.systemd:
+    name: postgresql-16
+    state: restarted
+  # handlers:
+  #   - name: restart postgresql
+  #     ansible.builtin.service:
+  #       name: postgresql
+  #       state: restarted
+
+# - name: Allow connections from specified IP address
+#       ansible.builtin.lineinfile:
+#         path: "{{ pg_hba_conf_path }}"
+#         line: "host    all             all             {{ remote_ip_address }}/32            md5"
+#         state: present
+#       notify: restart postgresql
+
+# editing postgres
+# - name: Restore wal_keep_segments parameter to initial state
+#   postgresql_set:
+#     name: wal_keep_segments
+#     reset: yes
+
+- name: Install the firewalld
+  ansible.builtin.dnf:
+    name: firewalld
+    state: present
+
+- name: Edit firewalld and enable port 5432
+  ansible.posix.firewalld:
+    port: 5432/tcp
+    permanent: true
+    state: enabled

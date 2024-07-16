@@ -1,0 +1,7 @@
+sudo yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
+sudo curl -o /etc/yum.repos.d/scylla.repo -L https://downloads.scylladb.com/rpm/centos/scylla-6.0.repo
+sudo yum install scylla
+Run the scylla_setup script to tune the system settings
+  
+sudo scylla_setup
+sudo systemctl start scylla-server

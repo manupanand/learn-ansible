@@ -6,6 +6,10 @@
 
 # - name: Disable the built-in PostgreSQL module
 #   ansible.builtin.shell: dnf module disable postgres -y
+- name: Disable the built-in PostgreSQL module
+  ansible.builtin.dnf:
+    name: postgresql
+    state: absent
 
 - name: Install PostgreSQL
   ansible.builtin.dnf:

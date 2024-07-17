@@ -1,0 +1,30 @@
+- name: Install redis
+  ansible.builtin.dnf:
+    name: redis
+    state: present
+
+- name: Enable Redis service
+  ansible.builtin.systemd:
+    name: redis
+    enabled: yes
+
+- name: Start Redis service
+  ansible.builtin.systemd:
+    name: redis
+    state: started
+
+- name: Install the firewalld
+  ansible.builtin.dnf:
+    name: firewalld
+    state: present
+
+- name: Edit firewalld and enable port 6379
+  ansible.posix.firewalld:
+    port: 6379/tcp
+    permanent: true
+    state: enabled
+
+- name: Restart Firewalld
+  ansible.builtin.systemd:
+    name: firewalld
+    state: restarted

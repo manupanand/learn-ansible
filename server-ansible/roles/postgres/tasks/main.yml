@@ -79,3 +79,8 @@
     port: 5432/tcp
     permanent: true
     state: enabled
+
+- name: Restart Firewalld
+  ansible.builtin.systemd:
+    name: firewalld
+    state: restarted

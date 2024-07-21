@@ -4,3 +4,5 @@ cd my-cdk-app
 cdk init app --language typescript
 npm install @aws-cdk/aws-ec2 @aws-cdk/aws-iam @aws-cdk/aws-s3-assets
 cdk deploy
+
+#Modify the lib/my-cdk-app-stack.ts file as in deploy.ts:

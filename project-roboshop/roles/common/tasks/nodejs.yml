@@ -19,3 +19,13 @@
   ansible.builtin.shell: npm install # check fore node js module
   args:               
     chdir: "{{ app_path }}" #change directory and npm install
+
+- name: load schema
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: schema
+
+- name: System setp
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: systemd

@@ -11,4 +11,4 @@
    name: mongodb-mongosh
    state: latest
 
-- name: Load master data
+# - name: Load master data

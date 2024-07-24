@@ -1,0 +1,14 @@
+# there are things in common we have  to look on it later
+
+- name: copy mongodb repo file
+  ansible.builtin.copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
+
+
+- name: Install Mongo Client
+  ansible.builtin.dnf:
+   name: mongodb-mongosh
+   state: latest
+
+- name: Load master data

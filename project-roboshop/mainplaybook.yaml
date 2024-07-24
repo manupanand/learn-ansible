@@ -1,1 +1,16 @@
-- name: Installing server 
+- name: Installing server requirements
+  hosts: all
+  become: yes
+  tasks:
+    - name: Updating the latest package
+      ansible.builtin.dnf:
+        update_cache: yes
+    - name: Upgrade all Packages
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+- name: Working on roles
+  hosts: all
+  become: yes
+  roles:
+    - "{{role_name}}"

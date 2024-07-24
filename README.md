@@ -31,3 +31,11 @@ ansible-playbook -i hosts --private-key ~/path/name.pem playbook.yml
 ansible-playbook -i inventory.ini playbook.yml
 ansible-playbook -i inventory.yml playbook.yml
 ```
+
+### specific ssh port 
+
+```
+ansible-playbook -i ~/path/hosts -u username -e ansible_password=password -e role_name=role -e ansible_ssh_port=port ~/path/filename.yml
+
+ansible-playbook -i ~/path/hosts -u username -e ansible_password=password -e ansible_become_password=sudo_password -e role_name=role -e ansible_ssh_port=port ~/path/filename.yml
+```

@@ -1,7 +1,14 @@
 - name: demo template environment
   hosts: localhost
   tasks:
-    - name: Copy file
-      ansible.biltin.copy:
+    - name: Template file
+      ansible.builtin.template:
         src: hello.txt
         dest: /var/tmp/h1.txt
+
+    # - name: Copy file
+    #   ansible.builtin.copy:
+    #     src: hello.txt
+    #     dest: /var/tmp/h1.txt
+
+# copy will not change env inside a file use template

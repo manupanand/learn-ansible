@@ -70,3 +70,10 @@ ansible-playbook -i $1.example.dev.project.com, -u username -e ansible_password=
 
 bash run.sh frontend/bash run.sh mongo
 ```
+
+# use template instead of copy to change common words inside a file  -{{env}}
+
+```
+ansible-playbook -e name=test template.yml
+
+```

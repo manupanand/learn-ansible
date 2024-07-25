@@ -26,7 +26,7 @@ ansible-playbook -i your_server_ip, -u ec2-user --private-key /path/to/your.pem 
 ansible-playbook -i hosts --private-key ~/path/name.pem playbook.yml
 ```
 
-# inventory.yml or inventory.ini
+### inventory.yml or inventory.ini
 ```
 ansible-playbook -i inventory.ini playbook.yml
 ansible-playbook -i inventory.yml playbook.yml
@@ -39,3 +39,11 @@ ansible-playbook -i ~/path/hosts -u username -e ansible_password=password -e rol
 
 ansible-playbook -i ~/path/hosts -u username -e ansible_password=password -e ansible_become_password=sudo_password -e role_name=role -e ansible_ssh_port=port ~/path/filename.yml
 ```
+
+### using dns record
+```
+ansible-playbook -i some.example.frontend.com, -u username -e ansible_password=password -e ansible_become_password=sudo_password -e role_name=role -e ansible_ssh_port=port ~/path/filename.yml
+```
+put comma after not going through a file
+
+some people write all the codes in shell script to execute or use Makefile

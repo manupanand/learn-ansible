@@ -24,6 +24,8 @@
   ansible.builtin.include_role:
     name: common
     tasks_from: schema
+  when: schema_setup is defined
+  # to run the commad only if required- schema is need to be defined or not
 
 - name: System setp
   ansible.builtin.include_role:

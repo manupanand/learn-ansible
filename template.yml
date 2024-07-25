@@ -1,0 +1,7 @@
+- name: demo template environment
+  hosts: localhost
+  tasks:
+    - name: Copy file
+      ansible.biltin.copy:
+        src: hello.txt
+        dest: /var/tmp/h1.txt

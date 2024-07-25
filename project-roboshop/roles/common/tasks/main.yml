@@ -1,0 +1,6 @@
+# write code toedit .bashrc
+
+- name: Set- prompt
+  ansible.builtin.shell: set-prompt {{ component }}-{{ env }}
+
+# write dependencie file

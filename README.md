@@ -46,4 +46,20 @@ ansible-playbook -i some.example.frontend.com, -u username -e ansible_password=p
 ```
 put comma after not going through a file
 
-some people write all the codes in shell script to execute or use Makefile
+some people write all the codes in shell script to execute or use Makefile or use wrapper script
+
+```
+make frontend
+make mongo
+make mysql
+```
+#### shell script to run  ansible commands
+
+run.sh
+
+```
+ansible-playbook -i $1.example.frontend.com, -u username -e ansible_password=password -e ansible_become_password=sudo_password -e role_name=$1 -e ansible_ssh_port=port ~/path/filename.yml
+
+bash run.sh frontend/bash run.sh mongo
+```
+

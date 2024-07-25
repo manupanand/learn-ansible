@@ -58,8 +58,15 @@ make mysql
 run.sh
 
 ```
-ansible-playbook -i $1.example.frontend.com, -u username -e ansible_password=password -e ansible_become_password=sudo_password -e role_name=$1 -e ansible_ssh_port=port ~/path/filename.yml
+ansible-playbook -i $1.example.dev.project.com, -u username -e ansible_password=password -e ansible_become_password=sudo_password -e role_name=$1 -e ansible_ssh_port=port ~/path/filename.yml
 
 bash run.sh frontend/bash run.sh mongo
 ```
 
+### keeping more friendly -dev,qat,uat,prod use {{env}} as variable
+
+```
+ansible-playbook -i $1.example.dev.project.com, -u username -e ansible_password=password -e ansible_become_password=sudo_password -e role_name=$1 -e env=dev -e ansible_ssh_port=port ~/path/filename.yml
+
+bash run.sh frontend/bash run.sh mongo
+```

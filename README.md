@@ -26,6 +26,15 @@ ansible-playbook -i your_server_ip, -u ec2-user --private-key /path/to/your.pem 
 ansible-playbook -i hosts --private-key ~/path/name.pem playbook.yml
 ```
 
+### using ssh with password -intall sshpass in local 
+```
+ansible-playbook -i ~/Documents/Codes/learn-ansible/hosts \
+-u rhel-server \
+-e ansible_ssh_pass=password \
+-e role_name=postgres \
+~/Documents/Codes/learn-ansible/server-ansible/mainplaybook.yml
+```
+
 ### inventory.yml or inventory.ini
 ```
 ansible-playbook -i inventory.ini playbook.yml

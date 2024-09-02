@@ -1,6 +1,6 @@
 [my-servers]
 
-server1 ansible_host=1
+server1 ansible_host=13.233.20.192
 
 
 

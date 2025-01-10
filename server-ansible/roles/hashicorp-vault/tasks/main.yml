@@ -1,0 +1,7 @@
+- name: retreive secrets
+  hosts: localhost
+  tasks:
+    - debug:
+        msg:"{{lookup('hashi_vault','secrete=kv/data/test:MYPASS token={{send token dynamically vault_token}} url=https://internalroute53:8200 validate_certs=False'}}
+
+#ansible-playbook name.yml -e vault_toke=token you saved

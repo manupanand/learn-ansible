@@ -1,4 +1,12 @@
-- name: PLaybook
+- name: Playbook
   hosts: all
   tasks:
    - ping:
+
+- name: sample test
+  hosts: all
+  tasks:
+    - name: print test
+      ansible.builtin.debug:
+        msg: i got connection
+

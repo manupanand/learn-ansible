@@ -1,0 +1,4 @@
+- name: PLaybook
+  hosts: all
+  tasks:
+   - ping:

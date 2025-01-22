@@ -1,5 +1,5 @@
-- name: Configuring server
+- name: Configuring server Roboshop playbook
   hosts: all
   become: true
   roles:
-    - frontend 
+    - "{{role_name}}"

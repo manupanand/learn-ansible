@@ -1,18 +1,18 @@
 - name : Disable Nginx module
   ansible.builtin.command: 
     cmd: dnf module disable nginx -y
-  become: true
+ 
 
 - name: Enable Nginx 24 version
   ansible.builtin.command:
     cmd: dnf module enable nginx:1.24 -y
-  become: true
+  
 
 - name: Install Nginx 
   ansible.builtin.dnf:
     name:  nginx
     state: latest
-  become: true
+ 
 
 - name: Copy nginx config file
   ansible.builtin.copy:

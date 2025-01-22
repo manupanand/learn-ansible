@@ -1,0 +1,6 @@
+- name : Disable Nginx module
+  ansible.builtin.dnf: 
+    name: nginx
+    module: true
+    state: disabled
+  

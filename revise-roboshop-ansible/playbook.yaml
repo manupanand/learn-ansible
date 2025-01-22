@@ -1,0 +1,4 @@
+- name: Configuring server
+  hosts: all
+  roles:
+    - frontend 

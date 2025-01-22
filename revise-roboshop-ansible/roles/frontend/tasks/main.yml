@@ -12,6 +12,7 @@
   ansible.builtin.dnf:
     name:  nginx
     state: latest
+  become: true
 
 - name: Copy nginx config file
   ansible.builtin.copy:

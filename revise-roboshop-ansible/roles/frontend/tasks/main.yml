@@ -1,6 +1,6 @@
 - name : Disable Nginx module
-  ansible.builtin.dnf: 
-    name: nginx
-    module: true
-    state: disabled
+  ansible.builtin.command: 
+    cmd: dnf module disable nginx -y
+  become: true
+    
   

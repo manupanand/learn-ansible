@@ -2,5 +2,10 @@
   ansible.builtin.command: 
     cmd: dnf module disable nginx -y
   become: true
+
+- name: Enable Nginx 24 version
+  ansible.builtin.command:
+    cmd: dnf module enable nginx:1.24 -y
+  become: true
     
   

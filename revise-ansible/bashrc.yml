@@ -19,5 +19,5 @@
     - name: Creatting a file with text
       ansible.builtin.lineinfile:
         path: "{{ ansible_env.HOME }}/newfile.txt"
-        line: "new line test"
+        line: 'export MY_ENV_VAR="{{my_value}}"'
         create: yes

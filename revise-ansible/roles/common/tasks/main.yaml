@@ -1,7 +1,7 @@
 - name: Add a line to .bashrc
   ansible.builtin.lineinfile:
     path: "{{ ansible_env.HOME }}/.bashrc"
-    line: 'export MY_ENV_VAR="my_value"'
+    line: 'export PS1="\[\e[1;31m\]\u\[\e[0m\]@\[\e[1;34m\]{{prompt_name}}\[\e[0m\] \w \$ "'
     create: yes
 
 - name: Source the updated .bashrc

@@ -1,4 +1,4 @@
 - name: Demo on roles
   hosts: all
   roles:
-    - sample
+    - "{{role_name}}"

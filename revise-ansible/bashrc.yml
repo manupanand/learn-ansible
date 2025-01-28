@@ -11,7 +11,11 @@
 #     executable: /bin/bash
 
 - name: make file and edit line
+  become: true
   ansible.builtin.lineinfile:
     path: "{{ ansible_env.HOME }}/testfile.txt"
     line: 'some test'
     create: yes
+- name: debug home variable
+  debug:
+    msg: "{{ ansible_env.HOME }}"

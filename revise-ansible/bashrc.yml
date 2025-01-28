@@ -9,8 +9,9 @@
 #     source ~/.bashrc
 #   args:
 #     executable: /bin/bash
+
 - name: make file and edit line
   ansible.builtin.lineinfile:
     path: "{{ ansible_env.HOME }}/testfile.txt"
-    line: 'export MY_ENV_VAR="{{my_value}}"'
+    line: 'some test'
     create: yes

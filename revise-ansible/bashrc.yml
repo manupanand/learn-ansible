@@ -16,3 +16,8 @@
     - name: debug home variable
       debug:
         msg: "{{ ansible_env.HOME }}"
+    - name: Creatting a file with text
+      ansible.builtin.lineinfile:
+        path: "{{ ansible_env.HOME }}/newfile.txt"
+        line: "new line test"
+        create: yes

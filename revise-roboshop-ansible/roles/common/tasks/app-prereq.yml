@@ -1,0 +1,13 @@
+- name:  Adding application user
+ 
+- name: Remove old content
+
+
+- name: Create App Directory
+
+
+- name: Download application content
+
+
+
+- name: Extract application content

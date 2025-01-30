@@ -2,12 +2,29 @@
   hosts: all
   become: true
   tasks: 
-    - name: Copying  vault repo
-      ansible.builtin.shell: |
-        sudo dnf config-manager addrepo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
-  
-
-    - name: Install Vault
+    - name: Unzip install
       ansible.builtin.dnf:
-        name: vault
+        name: Unzip
         state: latest
+    
+    - name: Downlad vault
+      ansible.builtin.get_url:
+        url: "https://releases.hashicorp.com/vault/1.18.3/vault_1.18.3_linux_amd64.zip"
+        dest: "/tmp/vault.zip"
+
+    - name: Unzip vault binary
+      ansible.builtin.unarchive:
+        src: "/tmp/vault.zip"
+        dest: "/usr/local/bin"
+        remote_src: true
+
+    - name: Set binary permission
+      ansible.builtin.file: 
+        path: "/usr/local/bin/vault"
+        mode: '0755'
+        owner: root 
+        group: root
+
+
+
+  

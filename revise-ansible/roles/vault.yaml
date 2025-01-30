@@ -1,9 +1,13 @@
-- name: Copying  vault repo
-  ansible.builtin.shell: |
-    sudo dnf config-manager addrepo --from-repofile=https://rpm.releases.hashicorp.com/RHEL/hashicorp.
+- name: Vault server
+  hosts: all
   become: true
+  tasks: 
+    - name: Copying  vault repo
+      ansible.builtin.shell: |
+        sudo dnf config-manager addrepo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+  
 
-- name: Install Vault
-  ansible.builtin.dnf:
-    name: vault
-    state: latest
+    - name: Install Vault
+      ansible.builtin.dnf:
+        name: vault
+        state: latest

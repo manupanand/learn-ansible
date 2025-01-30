@@ -4,7 +4,7 @@
   tasks: 
     - name: Unzip install
       ansible.builtin.dnf:
-        name: Unzip
+        name: unzip
         state: latest
     
     - name: Downlad vault

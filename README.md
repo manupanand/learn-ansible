@@ -86,5 +86,5 @@ bash run.sh frontend/bash run.sh mongo
 ansible-playbook -e name=test template.yml
 
 ```
-
-ansible-playbook -i frontend.dev.rdevops80.online, -e ansible_user=ec2-user -e ansible_password=Dev  -e env=dev -e role_name= main.yml
+```
+ansible-playbook -i frontend.dev.rdevops80.online, -e ansible_user=ec2-user -e ansible_password=Dev  -e env=dev -e role_name= main.yml```

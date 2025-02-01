@@ -14,4 +14,4 @@
 
 - name: Load Master Data
   ansible.builtin.shell: |
-    mongosh --host monog.dev.project.online </app/db/master-data.js
+    mongosh --host monog.{{env}}.project.online </app/db/master-data.js

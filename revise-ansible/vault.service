@@ -1,0 +1,19 @@
+[Unit]
+Description=Hashicorp Vault
+Documentation=https://www.vaultproject.io/docs/
+After=network-online.target
+Requires=network-online.target
+
+[Service]
+User=vault
+Group=vault
+ExecStart=/usr/local/bin/vault server -config=/etc/vault.d/vault.hcl
+ExecReload=/bin/kill -HUP $MAINPID
+KillSignal=SIGTERM
+Restart=on-failure
+LimitNOFILE=65536
+StandardOutput=append:/var/log/vault/vault_stdout.log
+StandardError=append:/var/log/vault/vault_stderr.log
+
+[Install]
+WantedBy=multi-user.target

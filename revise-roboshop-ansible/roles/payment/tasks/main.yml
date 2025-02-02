@@ -1,0 +1,5 @@
+#node js is commong for many service, make it common and load here
+- name: Set up Python service
+  ansible.builtin.include_role:
+    name: common
+    tasks_form: python

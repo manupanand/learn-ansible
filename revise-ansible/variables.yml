@@ -1,8 +1,58 @@
 - name: Demo variables
   hosts: all
+  #definig variable in play level
   vars:
     URL: google.com
+  #another way to define varin file level
+  vars_file:
+    - sample-vars.yaml
   tasks:
     - name: Print URL
       ansible.builtin.debug:
-        msg: "URL - {{URL}}" #variable {{}}
+        msg: "URL - {{URL}}, URL1- {{URL1}}" #variable {{}}
+      vars: 
+        URL: task.example.com
+  roles:
+    - sample
+
+- name: Variable type Demo
+  hosts: localhosts
+  vars: 
+    CLASS: devops
+    timings:
+      - 6am
+      - 7am
+    trainers: 
+      6am: manu
+      9am: peet
+  tasks:
+    - name: accessing variables
+      ansible.builtin.debug:
+        msg: "{{CLASS}}- {{timings[0]}}-{{trainers['6am']}}"
+
+- name: Variable datatypes
+  hosts: localhosts
+  vars:
+    number1: 10
+    number2: 11.1
+    string1: abc 
+    string2: sdferr
+    boolean: yes
+    boolean2: no
+    boolean3: true
+    boolean4: false
+
+- name: retreievev variables
+  hosts: local hosts
+  tasks:
+   - ansible.builtin.shell: uptime
+     register: out #geting in output on a variable out
+
+   - ansible.buitlin.debug:
+       msg: "{{out}}"
+   - shell: id ronboshop
+     register: out
+     ignore_errors: yes #procede if errors without stoping
+
+   - ansible.builtin.debug:
+        msg: User details- {{out.stdout}} 

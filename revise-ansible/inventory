@@ -1,0 +1,16 @@
+#host list
+h1
+h2
+172.168.1.1
+172.6.3.6
+172.65.32.3
+
+[FRONTEND]
+frontend.dev.rdevops.online
+frontend2.dev.rdevops.online
+[CATALOGUE]
+catalogue.dev.rdevops.online
+
+# ansible -i inventory <GROUP NAME>
+# default group name is all , here in this file we created two more groups FRONTEND and CATALOGUE
+

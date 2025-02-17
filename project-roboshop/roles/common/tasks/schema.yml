@@ -1,7 +1,7 @@
 # there are things in common we have  to look on it later
 
 - name: copy mongodb repo file
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: mongo.repo
     dest: /etc/yum.repos.d/mongo.repo
 

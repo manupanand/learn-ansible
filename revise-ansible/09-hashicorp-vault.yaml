@@ -1,0 +1,11 @@
+- name: vault
+  host: all
+  task:
+    - name: Retrieve secret from vault
+      ansible.builtin.debug: 
+        msg: "{{lookup('hashi_vault','secret=kv/data/test:MYPASS token={{vault_token}} url=https://vault-internal.man.online:8200 validate_certs=False)}}"
+
+
+
+#inside vault server
+# vault operator unseal -tls-skip-verify token

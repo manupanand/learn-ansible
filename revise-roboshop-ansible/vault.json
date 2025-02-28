@@ -1,0 +1,30 @@
+[{
+    "MONGO":"true",
+    "MONGO_URL":"mongodb://mongo.dev.project.online:27017/catalogue"
+},
+{
+    "CATALOGUE_HOST": "catalogue.dev.manupanand.online",
+    "CATALOGUE_PORT": "8080",
+    "REDIS_HOST": "redis.dev.manupanand.online"
+  },
+{
+    "AMQP_HOST":"rabbitmq.dev.manupanand.online",
+"AMQP_USER":"roboshop",
+"AMQP_PASS":"roboshop123"
+},
+{
+    "CART_HOST":"cart.dev.manupanand.online",
+"CART_PORT":"8080",
+"USER_HOST":"user.dev.manupanand.online",
+"USER_PORT":"8080",
+"AMQP_HOST":"rabbitmq.dev.manupanand.online",
+"AMQP_USER":"roboshop",
+"AMQP_PASS":"roboshop123"
+},{
+   "CART_ENDPOINT":"cart.dev.manupanand.online:8080",
+"DB_HOST":"mysql.dev.manupanand.online"
+},{
+    "MONGO":"true",
+"REDIS_URL":"redis://redis.dev.manupanand.online:6379",
+"MONGO_URL":"mongodb://mongo.dev.manupanand.online:27017/users"
+}]

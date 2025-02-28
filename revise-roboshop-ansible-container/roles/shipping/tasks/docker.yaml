@@ -1,0 +1,37 @@
+# - name: Run cart container
+#   container.podman.podman_contianer:
+#     name: cart
+#     image: 
+#     state: started
+    # ports:
+      # - "8080:8080"
+
+- name: Run Shipping container
+  docker_container:
+    name: shipping
+    image: public.ecr.aws/w8x4g9h7/roboshop-v3/shipping
+    state: started
+    ports:
+      - "8080:8080"
+    env: 
+      CART_ENDPOINT: "{{secrets.CART_ENDPOINT}}"
+      DB_HOST: "{{secrets.DB_HOST}}"
+      
+     
+# laoding schema contianers
+- name: Load schema contianers
+  loop: 
+    - app-user
+    - schema
+    - master-data
+  docker_container:
+    name: "{{item}}"
+    image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+    state: started
+    env: 
+      DB_TYPE: "{{secrets.DB_TYPE}}"
+      APP_GIT_URL: "{{secrets.APP_GIT_URL}}"
+      DB_HOST: "{{secrets.DB_HOST}}"
+      DB_USER: "{{secrets.DB_USER}}"
+      DB_PASS: "{{secrets.DB_PASS}}"
+      SCHEMA_FILE: "db/{{item}}.sql"

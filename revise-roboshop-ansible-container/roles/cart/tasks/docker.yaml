@@ -1,0 +1,19 @@
+# - name: Run cart container
+#   container.podman.podman_contianer:
+#     name: cart
+#     image: 
+#     state: started
+    # ports:
+      # - "8080:8080"
+
+- name: Run cart container
+  docker_container:
+    name: cart
+    image: public.ecr.aws/w8x4g9h7/roboshop-v3/cart
+    state: started
+    ports:
+      - "8080:8080"
+    env: 
+      CATALOGUE_HOST: "{{secrets.CATALOGUE_HOST}}"
+      CATALOGUE_PORT: "{{secrets.CATALOGUE_PORT}}"
+      REDIS_HOST: "{{secrets.REDIS_HOST}}"

@@ -1,0 +1,30 @@
+# - name: Run cart container
+#   container.podman.podman_contianer:
+#     name: cart
+#     image: 
+#     state: started
+    # ports:
+      # - "8080:8080"
+
+- name: Run catalogue container
+  docker_container:
+    name: catalogue
+    image: public.ecr.aws/w8x4g9h7/roboshop-v3/catalogue
+    state: started
+    ports:
+      - "8080:8080"
+    env: 
+      MONGO: "{{secrets.MONGO}}"
+      MONGO_URL: "{{secrets.MONGO_URL}}"
+     
+# LOADING MASTER DATA
+- name: Load mater data container
+  docker_container:
+    name: master-data 
+    image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+    state: started
+    env: 
+      DB_TYPE: "{{secrets.DB_TYPE}}"
+      APP_GIT_URL: "{{secrets.APP_GIT_URL}}"
+      DB_HOST: "{{secrets.DB_HOST}}"
+      SCHEMA_FILE: "{{secrets.SCHEMA_FILE}}"

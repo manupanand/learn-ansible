@@ -1,0 +1,21 @@
+# - name: Run cart container
+#   container.podman.podman_contianer:
+#     name: cart
+#     image: 
+#     state: started
+    # ports:
+      # - "8080:8080"
+
+- name: Run User container
+  docker_container:
+    name: user
+    image: public.ecr.aws/w8x4g9h7/roboshop-v3/user
+    state: started
+    ports:
+      - "8080:8080"
+    env: 
+      MONGO: "{{secrets.MONGO}}"
+      REDIS_URL: "{{secrets.REDIS_URL}}"
+      MONGO_URL: "{{secrets.MONGO_UR}}"
+      
+     

@@ -1,0 +1,5 @@
+#node js is common for many service, make it common and load here
+- name: Create app container
+  ansible.builtin.include_role:
+    name: "{{app_name}}"
+    tasks_form: docker

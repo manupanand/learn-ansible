@@ -1,0 +1,27 @@
+# - name: Run cart container
+#   container.podman.podman_contianer:
+#     name: cart
+#     image: 
+#     state: started
+    # ports:
+      # - "8080:8080"
+
+- name: Run Frontend container
+  docker_container:
+    name: frontend
+    image: public.ecr.aws/w8x4g9h7/roboshop-v3/frontend
+    state: started
+    ports:
+      - "80:80"
+    env: 
+      CATALOGUE_HOST: "{{secrets.CATALOGUE_HOST}}"
+      CATALOGUE_PORT: "{{secrets.CATALOGUE_PORT}}"
+      CART_HOST: "{{secrets.CART_HOST}}"
+      CART_PORT: "{{secrets.CART_PORT}}"
+      USER_HOST: "{{secrets.USER_HOST}}"
+      USER_PORT: "{{secrets.USER_PORT}}"
+      SHIPPING_HOST: "{{secrets.SHIPPING_HOST}}"
+      SHIPPING_PORT: "{{secrets.SHIPPING_PORT}}"
+      PAYMENT_HOST: "{{secrets.PAYMENT_HOST}}"
+      PAYMENT_PORT: "{{secrets.PAYMENT_PORT}}"
+     
